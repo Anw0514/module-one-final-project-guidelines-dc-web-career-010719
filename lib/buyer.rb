@@ -20,8 +20,10 @@ class Buyer < ActiveRecord::Base
   #   end
   # end
   #
-  def adopt(dog)
-    Adoption.new(buyer: self, dog: dog)
+  def adopt(dog_name)
+    dog = Dog.find_by(name: dog_name)
+    ad = Adoption.new(buyer: self, dog: dog)
+    ad.save
   end
 
 

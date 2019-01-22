@@ -26,4 +26,10 @@ elsif answer == "y"
       puts dog.name
     end
   end
+  puts "please enter the name of the dog you would like to adopt."
+  chosen_one = gets.chomp
+  user.adopt(chosen_one)
+  puts "You have adopted #{chosen_one}!"
+  puts Adoption.all
+
 end
