@@ -26,5 +26,31 @@ class Buyer < ActiveRecord::Base
     ad.save
   end
 
+  def show_adoptions
+    puts "\n"
+    self.adoptions.each do |adoption|
+      puts "You own #{adoption.dog.name}.\n"
+    end
+  end
+
+  def adopt_prompt
+    puts "\nGreat! Are you okay with a special needs dog?(y/n)"
+    s = gets.chomp
+    if s == "y"
+      Dog.all.each do |dog|
+        puts dog.name
+      end
+    elsif s == "n"
+      Dog.not_special.each do |dog|
+        puts dog.name
+      end
+    end
+    puts "\nPlease enter the name of the dog you would like to adopt."
+    chosen_one = gets.chomp
+    self.adopt(chosen_one)
+    puts "\nYou have adopted #{chosen_one}!"
+  end
+
+
 
 end
