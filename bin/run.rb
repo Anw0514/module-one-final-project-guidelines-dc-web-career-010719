@@ -1,19 +1,29 @@
 require_relative '../config/environment'
 
-i = 1
-10.times do
-  Dog.create(name: "Dog #{i}")
-  i += 1
+
+puts "Welcome to JSON Derulo's Dog Adoption Agency! \n"
+puts "What is your name?"
+
+name = gets.chomp
+
+user = Buyer.create(name: name)
+
+puts "Hi, #{name}. Would you like to adopt a dog today? (y/n)"
+
+answer = gets.chomp
+
+if answer == "n"
+  puts "Come back soon!"
+elsif answer == "y"
+  puts "Great! Are you okay with a special needs dog?(y/n)"
+  s = gets.chomp
+  if s == "y"
+    Dog.all.each do |dog|
+      puts dog.name
+    end
+  elsif s == "n"
+    Dog.not_special.each do |dog|
+      puts dog.name
+    end
+  end
 end
-i = 1
-3.times do
-  Buyer.create(name: "Person #{i}")
-  i += 1
-end
-
-ad = Buyer.all.sample.adopt(Dog.all.sample)
-
-puts ad.buyer.name
-puts ad.dog.name
-
-puts "HELLO WORLD"
