@@ -28,8 +28,12 @@ class Buyer < ActiveRecord::Base
 
   def show_adoptions
     puts "\n"
-    self.adoptions.all.each do |adoption|
-      puts "You own #{adoption.dog.name}.\n"
+    if self.adoptions == []
+      puts "You haven't adopted any dogs."
+    else
+      self.adoptions.all.each do |adoption|
+        puts "You own #{adoption.dog.name}.\n"
+      end
     end
   end
 
