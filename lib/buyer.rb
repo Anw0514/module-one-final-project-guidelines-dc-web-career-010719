@@ -28,7 +28,7 @@ class Buyer < ActiveRecord::Base
 
   def show_adoptions
     puts "\n"
-    self.adoptions.each do |adoption|
+    self.adoptions.all.each do |adoption|
       puts "You own #{adoption.dog.name}.\n"
     end
   end
@@ -36,6 +36,7 @@ class Buyer < ActiveRecord::Base
   def adopt_prompt
     puts "\nGreat! Are you okay with a special needs dog?(y/n)"
     s = gets.chomp
+    puts "\nThe dogs available to you are:"
     if s == "y"
       Dog.all.each do |dog|
         puts dog.name
