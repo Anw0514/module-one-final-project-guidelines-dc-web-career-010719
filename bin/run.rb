@@ -1,21 +1,23 @@
 require_relative '../config/environment'
 
 
+puts "\n\n\n\n\n\n"
+
 puts "Welcome to JSON Derulo's Dog Adoption Agency! \n"
-puts "What is your name?"
+puts "\nWhat is your name?"
 
 name = gets.chomp
 
-user = Buyer.create(name: name)
+user = Buyer.create_or_find_by(name: name)
 
-puts "Hi, #{name}. Would you like to adopt a dog today? (y/n)"
+puts "\nHi, #{name}. Would you like to adopt a dog today? (y/n)"
 
 answer = gets.chomp
 
 if answer == "n"
-  puts "Come back soon!"
+  puts "\nCome back soon!"
 elsif answer == "y"
-  puts "Great! Are you okay with a special needs dog?(y/n)"
+  puts "\nGreat! Are you okay with a special needs dog?(y/n)"
   s = gets.chomp
   if s == "y"
     Dog.all.each do |dog|
@@ -26,10 +28,9 @@ elsif answer == "y"
       puts dog.name
     end
   end
-  puts "please enter the name of the dog you would like to adopt."
+  puts "\nPlease enter the name of the dog you would like to adopt."
   chosen_one = gets.chomp
   user.adopt(chosen_one)
-  puts "You have adopted #{chosen_one}!"
-  puts Adoption.all
+  puts "\nYou have adopted #{chosen_one}!"
 
 end
