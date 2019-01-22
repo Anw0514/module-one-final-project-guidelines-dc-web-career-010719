@@ -1,14 +1,15 @@
 class Adoption < ActiveRecord::Base
-  # has_many :buyers, :dogs
+  belongs_to :buyer
+  belongs_to :dog
 
-  attr_reader :date, :dog, :buyer
-
-  @@all = []
-
-  def initialize(date, buyer, dog)
-    @date = date
-    @dog = dog
-    @buyer = buyer
-    @@all << self
-  end
+  # attr_reader :date, :dog, :buyer
+  #
+  # @@all = []
+  #
+  # def initialize(date, buyer, dog)
+  #   @date = date
+  #   @dog = dog
+  #   @buyer = buyer
+  #   @@all << self
+  # end
 end
