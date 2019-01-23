@@ -23,11 +23,13 @@ while answer != "3"
 
   if answer == "1"
     user.show_adoptions
+    puts "\nPress enter to continue"
+    gets.chomp
   elsif answer == "2"
     user.adopt_prompt
+    puts "\nPress enter to continue"
+    gets.chomp
   end
-  puts "\nPress enter to continue"
-  gets.chomp
 end
 
 puts "\nThank you for choosing JSON Derulo's Dog Adoption Agency!"
